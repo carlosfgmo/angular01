@@ -1,26 +1,33 @@
-<h1>{{titulo}}</h1>
+<app-slider [nombre]="'Peliculas'"></app-slider>
 
-<button (click)="cambiarTitulo()">Pulsame</button>
+<div class="center">
+    <section id="content">
 
-<hr>
+        <h1>{{titulo}}</h1>
+        <button (click)="cambiarTitulo()">Pulsame</button>
+        <hr>
 
-<h2 class="subheader">Listado de peliculas (total: {{peliculas.length}})</h2>
+        <h2 class="subheader">Listado de peliculas (total: {{peliculas.length}})</h2>
 
-<div id="articles" *ngIf="peliculas">
-    <article class="article-item" *ngFor="let pelicula of peliculas; let i = index;">
-        <div class="image-wrap">
-            <img src="{{pelicula.image}}" alt="{{pelicula.title}}" />
+        <div id="articles" *ngIf="peliculas">
+            <article class="article-item" *ngFor="let pelicula of peliculas; let i = index;">
+                <div class="image-wrap">
+                    <img src="{{pelicula.image}}" alt="{{pelicula.title}}" />
+                </div>
+                <h2>{{i+1}}.- {{pelicula.title}}</h2>
+                <span class="date">
+                    Hace 5 minutos
+                </span>
+                <!-- <span class="year" [style.background]="pelicula.year >= 2018 ? 'green' : 'red'"> -->
+                <!-- <span class="year" [class.year-green]="pelicula.year >= 2018" [class.year-red]="pelicula.year < 2018"> -->
+                <span class="year" [ngClass]="{'year-green': pelicula.year >= 2018, 'year-red': pelicula.year < 2018}">
+                    {{pelicula.year}}
+                </span>
+                <a href="#">Leer más</a>
+                <div class="clearfix"></div>
+            </article>
         </div>
-        <h2>{{i+1}}.- {{pelicula.title}}</h2>
-        <span class="date">
-            Hace 5 minutos
-        </span>
-        <!-- <span class="year" [style.background]="pelicula.year >= 2018 ? 'green' : 'red'"> -->
-        <!-- <span class="year" [class.year-green]="pelicula.year >= 2018" [class.year-red]="pelicula.year < 2018"> -->
-        <span class="year" [ngClass]="{'year-green': pelicula.year >= 2018, 'year-red': pelicula.year < 2018}">
-                {{pelicula.year}}
-        </span>
-        <a href="#">Leer más</a>
-        <div class="clearfix"></div>
-    </article>
+
+    </section>
+    <app-sidebar></app-sidebar>
 </div>
