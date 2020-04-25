@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'RomiAxPOS';
+  public title = 'RomiAxPOS';
+  public homeText = 'Bienvenido a mi pagina web 2';
 }
